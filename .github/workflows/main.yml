@@ -1,6 +1,7 @@
 name: Lighthouse CI
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
+  workflow_dispatch:
   schedule:
     - cron: '59 23 * * *'
 jobs:
