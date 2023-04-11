@@ -1,0 +1,9 @@
+code examples:
+  stage: test
+  image: mcr.microsoft.com/playwright:v1.32.0-focal
+  only:
+    - schedules
+  script:
+    - pnpm install
+    - cd apps/e2e-tests/
+    - npx playwright test checkCodeExamples.spec.ts --project=chromium
