@@ -17,3 +17,5 @@ jobs:
           uploadArtifacts: true 
           temporaryPublicStorage: true
           configPath: './lighthouserc.js'
+      - run: lhci autorun
+
