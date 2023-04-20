@@ -21,6 +21,5 @@ jobs:
           temporaryPublicStorage: true
           configPath: './lighthouserc.js'
       - run: npm install && npm install -g @lhci/cli@0.11.x
-      - run: npm run build
       - run: lhci autorun
 
