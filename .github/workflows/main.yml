@@ -9,11 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
       - name: Audit URLs using Lighthouse
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: |
-            "https://frontends-demo.vercel.app/"
+            "https://frontends-demo.vercel.app/",
+            "https://frontends-demo.vercel.app/Specials-Sale/",
+            "https://frontends-demo.vercel.app/Products/Product-with-CMS/",
           uploadArtifacts: true 
           temporaryPublicStorage: true
           configPath: './lighthouserc.js'
