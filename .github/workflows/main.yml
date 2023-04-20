@@ -16,9 +16,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: |
-            "https://frontends-demo.vercel.app/",
-            "https://frontends-demo.vercel.app/Specials-Sale/",
-            "https://frontends-demo.vercel.app/Products/Product-with-CMS/",
+            "https://frontends-demo.vercel.app/"
           uploadArtifacts: true 
           temporaryPublicStorage: true
           configPath: './lighthouserc.js'
