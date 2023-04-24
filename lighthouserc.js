@@ -37,7 +37,7 @@ module.exports = {
     upload: {
       target: "lhci",
       serverBaseUrl: "https://lhci-server.apps.shopware.io",
-      token: "6192d5d3-055a-4e82-be64-41cc7434c3f9",
+      token: "${{ secrets.LHCI_GITHUB_TOKEN }}",
     },
   },
 };
