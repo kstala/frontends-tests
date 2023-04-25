@@ -20,4 +20,4 @@ jobs:
           configPath: './lighthouserc.js'
       - run: npm install && npm install -g @lhci/cli@0.11.x
       - run: lhci autorun
-
+      - run: lhci upload --serverBaseUrl="https://lhci-server.apps.shopware.io" --token=${{ secrets.LHCI_GITHUB_TOKEN }}
