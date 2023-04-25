@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     collect: {
       numberOfRuns: 5,
-      url: ["https://frontends-demo.vercel.app/"],["https://frontends-demo.vercel.app/Products/"],["https://frontends-demo.vercel.app/Summer-BBQ/"],
+      url: ["https://frontends-demo.vercel.app/"],
       settings: {
         onlyCategories: [
           "performance",
