@@ -16,7 +16,9 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: |
-            "https://frontends-demo.vercel.app/"
+            "https://frontends-demo.vercel.app/",
+            "https://frontends-demo.vercel.app/Products/",
+            "https://frontends-demo.vercel.app/Summer-BBQ/",
           configPath: './lighthouserc.js'
       - run: npm install && npm install -g @lhci/cli@0.11.x
       - run: lhci autorun
