@@ -1,4 +1,4 @@
-name: code examples
+name: Vue demo store
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: 
   workflow_dispatch:
