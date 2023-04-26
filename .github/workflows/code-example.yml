@@ -1,5 +1,5 @@
 name: Code examples
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: Playwright is testing code examples 🚀
 on: 
   workflow_dispatch:
   schedule:
