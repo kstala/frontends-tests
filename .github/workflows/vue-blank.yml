@@ -1,5 +1,5 @@
 name: Vue Blank
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: Playwright is testing vue blank 🚀
 on: 
   workflow_dispatch:
   schedule:
