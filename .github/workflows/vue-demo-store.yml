@@ -1,5 +1,5 @@
 name: Vue demo store
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: Playwright is testing vue demo store 🚀
 on: 
   workflow_dispatch:
   schedule:
