@@ -7,6 +7,9 @@ on:
 jobs:
   run-code_examples-tests:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontends-test/playwright-report/
     name: Playwright testing code examples
     steps:
       - uses: actions/checkout@v3
