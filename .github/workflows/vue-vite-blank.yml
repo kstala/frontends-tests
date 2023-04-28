@@ -19,7 +19,7 @@ jobs:
         if: always()
         with:
           name: playwright-report
-          path: /playwright-report/
+          path: playwright-report/
           retention-days: 30
       - name: Run tests
         run: BASE_E2E_URL=https://stackblitz.com/github/shopware/frontends/tree/main/templates/vue-vite-blank npx playwright test checkStackblitzTemplates.spec.ts --project=chromium
