@@ -4,8 +4,12 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// require('dotenv').config();
+require('dotenv').config();
 
+const newLocal = "https://frontends-demo.vercel.app/";
+const baseURL = process.env.BASE_E2E_URL || newLocal;
+
+console.log("Running tests for: ", baseURL);
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
