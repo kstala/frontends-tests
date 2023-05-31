@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { chromium, firefox, webkit } from '@playwright/test';
 import fs from "fs";
 import path from "path";
 
@@ -11,7 +12,7 @@ fs.readdirSync(directoryPath).forEach((file) => {
     );
     await page.waitForLoadState("domcontentloaded");
     await page.locator("button[class='ClickToLoad-actionBtn-bTGgA']").click();
-    await page.waitForLoadState("networkidle");
+    // await page.waitForLoadState("networkidle");
 
     const consoleLogs = [];
     page.on("console", (msg) => {

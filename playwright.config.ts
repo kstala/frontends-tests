@@ -15,6 +15,14 @@ console.log("Running tests for: ", baseURL);
  */
 export default defineConfig({
   testDir: './tests',
+  timeout: 90 * 1000,
+  expect: {
+    /**
+     * Maximum time expect() should wait for the condition to be met.
+     * For example in `await expect(locator).toHaveText();`
+     */
+    timeout: 30000,
+  },
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
