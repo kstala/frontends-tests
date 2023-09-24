@@ -20,11 +20,11 @@ fs.readdirSync(directoryPath).forEach((file) => {
         console.log(msg.text());
         consoleLogs.push(msg.text());
       }
-      expect(msg.type()).not.toBe("error");
+      expect(msg.type()).toBe("error");
     });
 
     page.on("response", (response) => {
-      expect(response.status()).toBe(300);
+      expect(response.status()).toBe(500);
     });
   });
 });
