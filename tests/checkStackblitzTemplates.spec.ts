@@ -8,7 +8,7 @@ test("Verify stackblitz template", async ({ page }) => {
   await page.waitForLoadState();
   await page.locator("text=Open in New Tab").click();
   await page.waitForLoadState("domcontentloaded");
-  await homePage.wait(10000);
+  // await homePage.wait(10000);
 
   const consoleLogs = [];
   page.on("console", (msg) => {
