@@ -17,16 +17,14 @@ module.exports = {
     assert: {
       assertions: {
         "categories:performance": [
-          "warn",
-          { minScore: 0.9, aggregationMethod: "median-run" },
           "error",
           { minScore: 0.9, aggregationMethod: "median-run" },
         ],
         "categories:accessibility": [
           "warn",
-          { minScore: 0.9, aggregationMethod: "median-run" },
+          { minScore: 0.99, aggregationMethod: "median-run" },
           "error",
-          { minScore: 0.8, aggregationMethod: "median-run" },
+          { minScore: 0.95, aggregationMethod: "median-run" },
         ],
         "categories:best-practices": [
           "warn",
