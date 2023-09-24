@@ -24,7 +24,7 @@ fs.readdirSync(directoryPath).forEach((file) => {
     });
 
     page.on("response", (response) => {
-      expect(response.status()).toBe(200);
+      expect(response.status()).toBe(300);
     });
   });
 });
