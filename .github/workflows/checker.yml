@@ -1,7 +1,7 @@
 name: Check for master or prod failure
 on:
   workflow_run:
-    workflows: [Code examples, Lighthouse CI]
+    workflows: [Code examples, Lighthouse CI, Vue demo store]
     types: [completed]
     branches: [main,prod]
 
