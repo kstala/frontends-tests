@@ -1,0 +1,23 @@
+
+
+> shopware-astro@0.1.1 build /Users/kstala/new/frontends/templates/astro
+> astro build
+
+[2m14:22:18[22m [34m[build][39m output: [34m"server"[39m
+[2m14:22:18[22m [34m[build][39m directory: [34m/Users/kstala/new/frontends/templates/astro/dist/[39m
+[2m14:22:18[22m [34m[build][39m adapter: [32m@astrojs/node[39m
+[2m14:22:18[22m [34m[build][39m Collecting build info...
+[2m14:22:18[22m [34m[build][39m [32m✓ Completed in 66ms.[39m
+[2m14:22:18[22m [34m[build][39m Building server entrypoints...
+[2K[1G[2K[1G[2K[1G[2K[1G[2K[1G[2K[1G[2K[1G[2K[1G[2K[1G[2m14:22:19[22m [34m[build][39m [32m✓ Completed in 478ms.[39m
+
+[42m[30m building client (vite) [39m[49m
+[2K[1Gtransforming (1) [2m../../node_modules/.pnpm/@astrojs+vue@4.0.8_@babel+core@7.23.9_astro@4.3.6_vue@3.4[2K[1Gtransforming (20) [2m../../node_modules/.pnpm/vue-demi@0.14.7_vue@3.4.19/node_modules/vue-demi/lib/ind[2K[1G[2m14:22:19[22m [34m[vite][39m [32m✓[39m 22 modules transformed.
+[2K[1Grendering chunks (1)...[2K[1G[2K[1Gcomputing gzip size (0)...[2K[1Gcomputing gzip size (1)...[2K[1G[2m14:22:19[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/client.JTyblkdy.js  [39m[1m[2m74.98 kB[22m[1m[22m[2m │ gzip: 29.65 kB[22m
+[2m14:22:19[22m [34m[vite][39m [32m✓ built in 344ms[39m
+[2m14:22:19[22m 
+[45m[30m finalizing server assets [39m[49m
+
+[2m14:22:19[22m [34m[build][39m Rearranging server assets...
+[2m14:22:19[22m [34m[build][39m Server built in [1m949ms[22m
+[2m14:22:19[22m [34m[build][39m [1mComplete![22m
