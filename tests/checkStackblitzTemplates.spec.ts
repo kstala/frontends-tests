@@ -8,7 +8,7 @@ const directoryPath = path.join(__dirname, "/../templates/");
 fs.readdirSync(directoryPath).forEach((template) => {
     test(`Open ${template}`, async ({ page }) => {
       test.setTimeout(90000);
-      await page.goto('./tests/pages/blank.html');
+      await page.goto('tests/pages/blank.html');
       await Promise.all([
         page.waitForLoadState('networkidle'),
         page.waitForLoadState('load'),
