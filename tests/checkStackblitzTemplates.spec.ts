@@ -10,7 +10,7 @@ fs.readdirSync(directoryPath).forEach((template) => {
       test.setTimeout(90000);
       await page.goto("tests/pages/blank.html");
       await Promise.all([
-        page.waitForLoadState('networkidle'),
+        // page.waitForLoadState('networkidle'),
         page.waitForLoadState('load'),
         page.evaluate((template) => {
           window.StackBlitzSDK.openGithubProject(`shopware/frontends/tree/main/templates/${template}`, {
@@ -20,7 +20,7 @@ fs.readdirSync(directoryPath).forEach((template) => {
           });
         },template),
       ]);    
-      await page.waitForLoadState('load'),
+      await page.waitForRequest('https://demo-frontends.shopware.store/store-api/context'),
       await expect(page).toHaveURL(`https://stackblitz.com/github/shopware/frontends/tree/main/templates/${template}?file=README.md`);
     
     

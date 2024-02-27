@@ -1,30 +1,46 @@
 import { test, expect } from "@playwright/test";
-import { chromium, firefox, webkit } from '@playwright/test';
 import fs from "fs";
 import path from "path";
 
-const directoryPath = path.join(__dirname, "/../examples/");
+// names of the directories that should not be tested in StackBlitz context in case of more complex setup
+// in that case an example should be tested manually
+const IGNORE_CHECK_EXAMPLES = [
+  "mollie-credit-card",
+  "adyen-dropin-component",
+  "commercial-quick-order",
+  // TODO: https://github.com/shopware/frontends/issues/678
+];
 
-fs.readdirSync(directoryPath).forEach((file) => {
-  test(`Verify ${file}`, async ({ page }) => {
-    const response = await page.goto(
-      `https://stackblitz.com/github/shopware/frontends/tree/main/examples/${file}?embed=1&theme=light&ctl=1&initialPath=%2F&view=preview`
-    );
-    await page.waitForLoadState("domcontentloaded");
-    await page.locator("button[class='ClickToLoad-actionBtn-bTGgA']").click();
-    // await page.waitForLoadState("networkidle");
+const directoryPath = path.join(__dirname, "../../../examples/");
 
-    const consoleLogs = [];
-    page.on("console", (msg) => {
-      if (msg.type() == "error") {
-        console.log(msg.text());
-        consoleLogs.push(msg.text());
-      }
-      expect(msg.type()).toBe("error");
-    });
+fs.readdirSync(directoryPath)
+  .filter((file) => !IGNORE_CHECK_EXAMPLES.includes(file))
+  .forEach((file) => {
+    test(`Verify ${file}`, async ({ page }) => {
+      const exampleName = `shopware/frontends/tree/feat/speed-up-stackblitz-examples/examples/${file}`;
+      await page.goto("file://" + __dirname + "/pages/blank.html", {
+        waitUntil: "domcontentloaded",
+        timeout: 0,
+      });
+      await Promise.all([
+        page.waitForLoadState("networkidle"),
+        page.evaluate((exampleName) => {
+          window.StackBlitzSDK.openGithubProject(exampleName, {
+            clickToLoad: false,
+            newWindow: false,
+            origin: "https://stackblitz.com",
+          });
+        }, exampleName),
+      ]);
+      expect(page.url()).toContain(
+        `https://stackblitz.com/github/${exampleName}`,
+      );
+      expect(await page.title()).toContain("Frontends");
+      await page
+        .locator('iframe[title="Preview page"]')
+        .waitFor({ state: "visible" });
 
-    page.on("response", (response) => {
-      expect(response.status()).toBe(500);
+      expect(await page.locator('iframe[title="Preview page"]')).toBeVisible();
+      expect(await page.mainFrame().content()).toContain("test-wrapper");
     });
   });
-});

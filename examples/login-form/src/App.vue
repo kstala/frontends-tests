@@ -1,23 +1,26 @@
 <script setup lang="ts">
-import { useUser } from "@shopware-pwa/composables-next";
-import { ClientApiError, ShopwareError } from "@shopware-pwa/types";
+import { useUser } from "@shopware-pwa/composables-next/dist";
+import type { ApiError } from "@shopware/api-client";
+import { ApiClientError } from "@shopware/api-client";
 import { reactive, ref } from "vue";
 const { logout, login, isLoggedIn, user } = useUser();
 const loginCredentials = reactive({
   username: "",
   password: "",
 });
-const errors = ref<ShopwareError[]>();
+const errors = ref<ApiError[]>([]);
 const invokeLogin = async () => {
   try {
     await login(loginCredentials);
   } catch (e) {
-    errors.value = (e as ClientApiError).messages;
+    if (e instanceof ApiClientError) {
+      errors.value = e.details.errors as ApiError[];
+    }
   }
 };
 </script>
 <template>
-  <div>
+  <div test-id="test-wrapper">
     <div v-if="!isLoggedIn">
       <h1
         class="text-md font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
