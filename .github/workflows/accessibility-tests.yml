@@ -1,5 +1,5 @@
-name: Stackblitz templates
-run-name: Playwright stackblitz templates 🚀
+name: Accessibility Check
+run-name: Playwright AxeCore check 🚀
 on: 
   workflow_dispatch:
   schedule:
@@ -7,7 +7,7 @@ on:
 jobs:
   run-code_examples-tests:
     runs-on: ubuntu-latest
-    name: Playwright testing stackblitz templates
+    name: AxeCore testing accessibility
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
