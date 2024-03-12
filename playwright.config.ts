@@ -7,7 +7,7 @@ import { defineConfig, devices } from '@playwright/test';
 require('dotenv').config();
 
 // const newLocal = "https://frontends-demo.vercel.app/";
-const baseURL = process.env.BASE_E2E_URL || 'http://127.0.0.1:8080';
+const baseURL = process.env.BASE_E2E_URL || 'https://frontends-demo.vercel.app/';
 
 console.log("Running tests for: ", baseURL);
 /**
