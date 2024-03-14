@@ -33,4 +33,4 @@ jobs:
 
       - name: Run tests
         run: |
-          npx playwright test checkStackblitzTemplates.spec.ts --project=chromium 
+         npx playwright test -c examples.config.ts checkStackblitzTemplates.spec.ts
