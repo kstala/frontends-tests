@@ -1,6 +1,6 @@
-name: Code examples
+name: Stackblitz templates
 
-run-name: Playwright is testing code examples 🚀
+run-name: Playwright is testing stackblitz templates 🚀
 on:
   workflow_dispatch:
   schedule:
