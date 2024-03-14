@@ -1,28 +1,37 @@
-name: Stackblitz templates
-run-name: Playwright stackblitz templates 🚀
-on: 
+name: Code examples
+
+run-name: Playwright is testing code examples 🚀
+on:
   workflow_dispatch:
   schedule:
-    - cron: '59 23 * * *'
+    - cron: "0 7 * * *"
 jobs:
   run-code_examples-tests:
-    runs-on: ubuntu-latest
-    name: Playwright testing stackblitz templates
+    runs-on: macos-14
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - name: Install dependencies
-        run: npm ci
-      - name: Install playwright browsers
-        run: npx playwright install --with-deps
-      - name: Run tests
-        run: npx playwright test checkStackblitzTemplates.spec.ts --project=chromium
-      - name: try zip the test result folder
-        if: failure()
-        run: zip -r playwright-report.zip playwright-report/
-      - uses: actions/upload-artifact@v3
-        if: always()
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          name: playwright-report zip
-          path: playwright-report.zip
-          retention-days: 7
+          node-version: 20
+
+      - run: corepack enable
+      - run: pnpm --version
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+          cache-dependency-path: "**/pnpm-lock.yaml"
+      - name: install
+        run: pnpm install --frozen-lockfile --prefer-offline
+
+      - name: Install dependencies with Playwright
+        run: |
+          pnpm playwright install --with-deps
+
+      - name: Run tests
+        run: |
+          cd apps/e2e-tests
+          npx playwright test checkStackblitzTemplates.spec.ts
