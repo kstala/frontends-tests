@@ -1,14 +1,14 @@
 import type { PlaywrightTestConfig } from "@playwright/test";
 import { devices } from "@playwright/test";
-import find from "find-up";
-export const findEnv = () => find.sync(process.env.ENV_FILE || ".env");
+// import find from "find-up";
+// export const findEnv = () => find.sync(process.env.ENV_FILE || ".env");
 
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
 
-require("dotenv").config({ path: findEnv() });
+// require("dotenv").config({ path: findEnv() });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
