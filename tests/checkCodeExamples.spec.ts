@@ -8,17 +8,18 @@ const IGNORE_CHECK_EXAMPLES = [
   "mollie-credit-card",
   "adyen-dropin-component",
   "commercial-quick-order",
-  "strapi-cms"
+  "strapi-cms",
+  "README.md",
   // TODO: https://github.com/shopware/frontends/issues/678
 ];
 
-const directoryPath = path.join(__dirname, "/../examples/");
+const directoryPath = path.join(__dirname, "../examples/");
 
 fs.readdirSync(directoryPath)
   .filter((file) => !IGNORE_CHECK_EXAMPLES.includes(file))
   .forEach((file) => {
     test(`Verify ${file}`, async ({ page }) => {
-      const exampleName = `shopware/frontends/tree/feat/speed-up-stackblitz-examples/examples/${file}`;
+      const exampleName = `shopware/frontends/tree/main/examples/${file}`;
       await page.goto("file://" + __dirname + "/pages/blank.html", {
         waitUntil: "domcontentloaded",
         timeout: 0,

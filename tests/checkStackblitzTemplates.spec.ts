@@ -8,18 +8,22 @@ const directoryPath = path.join(__dirname, "/../templates/");
 fs.readdirSync(directoryPath).forEach((template) => {
     test(`Open ${template}`, async ({ page }) => {
       test.setTimeout(90000);
-      await page.goto("tests/pages/blank.html");
+      const templateName = `shopware/frontends/tree/main/templates/${template}`;
+      await page.goto("file://" + __dirname + "/pages/blank.html", {
+        waitUntil: "domcontentloaded",
+        timeout: 0,
+      });
       await Promise.all([
         // page.waitForLoadState('networkidle'),
         page.waitForLoadState('load'),
-        page.evaluate((template) => {
-          window.StackBlitzSDK.openGithubProject(`shopware/frontends/tree/main/templates/${template}`, {
+        page.evaluate((templateName) => {
+          window.StackBlitzSDK.openGithubProject(templateName, {
             clickToLoad: false,
             newWindow: false,
-            origin: 'https://stackblitz.com/',
+            origin: "https://stackblitz.com",
           });
-        },template),
-      ]);    
+        }, templateName),
+      ]); 
       await page.waitForRequest('https://demo-frontends.shopware.store/store-api/context'),
       await expect(page).toHaveURL(`https://stackblitz.com/github/shopware/frontends/tree/main/templates/${template}?file=README.md`);
     
