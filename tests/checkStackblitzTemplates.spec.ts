@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 import fs from "fs";
 import path from "path";
 
-const directoryPath = path.join(__dirname, "../../../templates/");
+const directoryPath = path.join(__dirname, "../templates/");
 
 fs.readdirSync(directoryPath).forEach((template) => {
   test(`Open ${template}`, async ({ page }) => {
