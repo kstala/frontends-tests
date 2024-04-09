@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "@playwright/test": "^1.40.0"
+    "@playwright/test": "^1.40.0",
+    "axe-html-reporter": "^2.2.3"
   },
   "scripts": {
     "start": "npx http-server"
