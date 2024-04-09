@@ -19,7 +19,7 @@ jobs:
         run: npx playwright test accessibility-tests.spec.ts --project=chromium
       - name: try zip the test result folder
         if: failure()
-        run: zip -r playwright-report.zip playwright-report/
+        run: zip -r playwright-report.zip artifacts/
       - uses: actions/upload-artifact@v3
         if: always()
         with:
