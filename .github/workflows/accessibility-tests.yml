@@ -17,9 +17,6 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run tests
         run: npx playwright test accessibility-tests.spec.ts --project=chromium
-      - name: try zip the test result folder
-        if: failure()
-        run: zip -r playwright-report.zip build/reports/
       - uses: actions/upload-artifact@v3
         if: always()
         with:
