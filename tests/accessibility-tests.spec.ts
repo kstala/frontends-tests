@@ -16,12 +16,12 @@ test.describe('homepage', () => { // 2
       },
     });
 
-    if (!fs.existsSync("build/reports/accessibility-report.html")) {
+    if (!fs.existsSync("build/reports/homepage-report.html")) {
       fs.mkdirSync("build/reports", {
         recursive: true,
       });
     }
-    fs.writeFileSync("build/reports/accessibility-report.html", reportHTML);
+    fs.writeFileSync("build/reports/homepage-report.html", reportHTML);
 
   //Attached the violations to the test report
   await testInfo.attach("accessibility-scan-results", {
@@ -52,12 +52,12 @@ test.describe('product page', () => { // 2
       },
     });
 
-    if (!fs.existsSync("build/reports/accessibility-report.html")) {
+    if (!fs.existsSync("build/reports/product-page-report.html")) {
       fs.mkdirSync("build/reports", {
         recursive: true,
       });
     }
-    fs.writeFileSync("build/reports/accessibility-report.html", reportHTML);
+    fs.writeFileSync("build/reports/product-page-report.html", reportHTML);
 
   //Attached the violations to the test report
   await testInfo.attach("accessibility-scan-results", {
@@ -88,12 +88,12 @@ test.describe('category page', () => { // 2
       },
     });
 
-    if (!fs.existsSync("build/reports/accessibility-report.html")) {
+    if (!fs.existsSync("build/reports/category-page-report.html")) {
       fs.mkdirSync("build/reports", {
         recursive: true,
       });
     }
-    fs.writeFileSync("build/reports/accessibility-report.html", reportHTML);
+    fs.writeFileSync("build/reports/category-page-report.html", reportHTML);
 
   //Attached the violations to the test report
   // await testInfo.attach("accessibility-scan-results", {
