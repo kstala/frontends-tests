@@ -4,7 +4,7 @@ import { createHtmlReport } from 'axe-html-reporter';
 const fs = require('fs');
 
 
-test.describe('homepage', () => { 
+test.describe('homepage', () => { // 2
   test('should not have any automatically detectable accessibility issues', async ({ page }, testInfo) => {
     await page.goto('https://frontends-demo.vercel.app/'); 
 
@@ -22,6 +22,18 @@ test.describe('homepage', () => {
       });
     }
     fs.writeFileSync("build/reports/homepage-report.html", reportHTML);
+
+  //Attached the violations to the test report
+  await testInfo.attach("accessibility-scan-results", {
+    body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+    contentType: "application/json",
+  });
+
+  //Console log the violations
+  let violation = accessibilityScanResults.violations;
+  violation.forEach(function (entry) {
+    console.log(entry.impact + " " + entry.description);
+  });
 
   //Expect violations to be empty
   expect(accessibilityScanResults.violations).toEqual([]);
@@ -47,6 +59,18 @@ test.describe('product page', () => { // 2
     }
     fs.writeFileSync("build/reports/product-page-report.html", reportHTML);
 
+  //Attached the violations to the test report
+  await testInfo.attach("accessibility-scan-results", {
+    body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+    contentType: "application/json",
+  });
+
+  //Console log the violations
+  let violation = accessibilityScanResults.violations;
+  violation.forEach(function (entry) {
+    console.log(entry.impact + " " + entry.description);
+  });
+
   //Expect violations to be empty
   expect(accessibilityScanResults.violations).toEqual([]);
 });
@@ -70,6 +94,18 @@ test.describe('category page', () => { // 2
       });
     }
     fs.writeFileSync("build/reports/category-page-report.html", reportHTML);
+
+  //Attached the violations to the test report
+  // await testInfo.attach("accessibility-scan-results", {
+  //   body: JSON.stringify(accessibilityScanResults.violations, null, 2),
+  //   contentType: "application/json",
+  // });
+
+  // //Console log the violations
+  // let violation = accessibilityScanResults.violations;
+  // violation.forEach(function (entry) {
+  //   console.log(entry.impact + " " + entry.description);
+  // });
 
   //Expect violations to be empty
   expect(accessibilityScanResults.violations).toEqual([]);
