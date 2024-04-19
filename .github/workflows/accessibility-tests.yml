@@ -23,6 +23,11 @@ jobs:
         with:
           path: build/reports/
           retention-days: 7
+      - name: HTML Preview
+        id: html_preview
+        uses: pavi2410/html-preview-action@v2
+        with:
+          html_file: './build/reports/homepage-report.html'
       - name: "Publish test results"
         uses: peaceiris/actions-gh-pages@v3.7.3
         with: 
