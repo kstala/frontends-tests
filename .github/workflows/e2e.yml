@@ -22,7 +22,7 @@ jobs:
         run: |
           pnpm playwright install --with-deps
       - name: Run tests
-        run: pnpm run test:e2e
+        run: npx playwright test 
         env:
           BASE_E2E_URL: https://frontends-demo.vercel.app/
 
