@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { test } from "@playwright/test";
 import { HomePage } from "../page-objects/HomePage";
 import { RegisterForm } from "../page-objects/RegisterPage";
 import { faker } from "@faker-js/faker";
@@ -19,15 +19,38 @@ test.describe.only("Registration new user", () => {
     await homePage.clickOnSignIn();
     await homePage.openRegistrationPage();
     await registrationPage.fillCustomerData(
-      "e2e " + faker.name.firstName(),
-      "e2e " + faker.name.lastName(),
+      "e2e " + faker.person.firstName(),
+      "e2e " + faker.person.lastName(),
       faker.internet.exampleEmail(),
-      faker.internet.password()
+      faker.internet.password(),
     );
     await registrationPage.fillAddressData(
-      faker.address.street(),
-      faker.address.zipCode(),
-      faker.address.city()
+      faker.location.street(),
+      faker.location.zipCode(),
+      faker.location.city(),
+    );
+    await registrationPage.submitRegistraionForm();
+    await page.waitForLoadState("load");
+    await page.locator("header-sing-out-link").nth(1).isVisible();
+  });
+
+  test("Registration new user company", async ({ page }) => {
+    await homePage.clickOnSignIn();
+    await homePage.openRegistrationPage();
+    await registrationPage.fillCompanyData(
+      "e2e " + faker.company.name(),
+      "DE123456789",
+    );
+    await registrationPage.fillCustomerData(
+      "e2e " + faker.person.firstName(),
+      "e2e " + faker.person.lastName(),
+      faker.internet.exampleEmail(),
+      faker.internet.password(),
+    );
+    await registrationPage.fillAddressData(
+      faker.location.street(),
+      faker.location.zipCode(),
+      faker.location.city(),
     );
     await registrationPage.submitRegistraionForm();
     await page.waitForLoadState("load");

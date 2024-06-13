@@ -2,12 +2,12 @@ import { test, expect } from "@playwright/test";
 import fs from "fs";
 import path from "path";
 
-const directoryPath = path.join(__dirname, "../templates/");
+const directoryPath = path.join(__dirname, "../../../templates/");
 
 fs.readdirSync(directoryPath).forEach((template) => {
   test(`Open ${template}`, async ({ page }) => {
     test.setTimeout(200000);
-    const templateName = `shopware/frontends/tree/test/false-failure/templates/${template}`;
+    const templateName = `shopware/frontends/tree/main/templates/${template}`;
     await page.goto("file://" + __dirname + "/pages/blank.html", {
       waitUntil: "domcontentloaded",
       timeout: 0,
@@ -27,7 +27,7 @@ fs.readdirSync(directoryPath).forEach((template) => {
       "https://demo-frontends.shopware.store/store-api/context",
     ),
       await expect(page).toHaveURL(
-        `https://stackblitz.com/github/shopware/frontends/tree/test/false-failure/templates/${template}?file=README.md`,
+        `https://stackblitz.com/github/shopware/frontends/tree/main/templates/${template}?file=README.md`,
       );
 
     const consoleLogs = [];

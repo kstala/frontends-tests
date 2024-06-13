@@ -13,7 +13,7 @@ const IGNORE_CHECK_EXAMPLES = [
   // TODO: https://github.com/shopware/frontends/issues/678
 ];
 
-const directoryPath = path.join(__dirname, "../examples/");
+const directoryPath = path.join(__dirname, "../../../examples/");
 
 fs.readdirSync(directoryPath)
   .filter((file) => !IGNORE_CHECK_EXAMPLES.includes(file))

@@ -1,32 +1,30 @@
 import { Locator, Page } from "@playwright/test";
 
-export class SearchResultPage {
+export class CategoryPage {
   readonly page: Page;
-  readonly searchResultBox: Locator;
-  readonly selectedManufacturerFilterSearch: Locator;
+  readonly selectedColourFiltersCategory: Locator;
+  readonly colourCheckboxes: Locator;
+  readonly selectedManufacturerFiltersCategory: Locator;
   readonly manufacturerCheckboxes: Locator;
-  readonly selectedSelectionFilterSearch: Locator;
-  readonly selectionCheckboxes: Locator;
   readonly limitSelect: Locator;
 
   constructor(page: Page) {
     this.page = page;
-    this.searchResultBox = page.getByTestId("search-results-container");
-    this.selectedManufacturerFilterSearch = page.getByRole("button", {
+    this.selectedColourFiltersCategory = page.getByRole("button", {
+      name: "Colour",
+      exact: true,
+    });
+    this.colourCheckboxes = page.locator("input[name='Colour']");
+    this.selectedManufacturerFiltersCategory = page.getByRole("button", {
       name: "manufacturer",
       exact: true,
     });
     this.manufacturerCheckboxes = page.locator("input[name='manufacturer']");
-    this.selectedSelectionFilterSearch = page.getByRole("button", {
-      name: "Selection",
-      exact: true,
-    });
-    this.selectionCheckboxes = page.locator("input[name='Selection']");
     this.limitSelect = page.locator("select[name='limitchoices']");
   }
 
   async selectRandomManufacturerCheckbox() {
-    await this.selectedManufacturerFilterSearch.click();
+    await this.selectedManufacturerFiltersCategory.click();
     const manufacturerCheckboxes = await this.manufacturerCheckboxes.all();
     const countManufacturerCheckboxes = (
       await this.manufacturerCheckboxes.all()
@@ -38,15 +36,14 @@ export class SearchResultPage {
     await randomCheckbox.check();
   }
 
-  async selectRandomSelectionCheckbox() {
-    await this.selectedSelectionFilterSearch.click();
-    const selectionCheckboxes = await this.selectionCheckboxes.all();
-    const countSelectionCheckboxes = (await this.selectionCheckboxes.all())
-      .length;
+  async selectRandomColorCheckbox() {
+    await this.selectedColourFiltersCategory.click();
+    const colourCheckboxes = await this.colourCheckboxes.all();
+    const countColourCheckboxes = (await this.colourCheckboxes.all()).length;
     const randomCheckboxSelctor = Math.floor(
-      Math.random() * countSelectionCheckboxes,
+      Math.random() * countColourCheckboxes,
     );
-    const randomCheckbox = selectionCheckboxes[randomCheckboxSelctor];
+    const randomCheckbox = colourCheckboxes[randomCheckboxSelctor];
     await randomCheckbox.check();
   }
 
