@@ -1,0 +1,33 @@
+name: Visual Tests
+
+on:
+  push:
+    branches:
+      - "*"
+
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version-file: .nvmrc
+          check-latest: true
+
+      - name: Install deps
+        run: |
+          npm install
+          npx playwright install
+
+      - name: Test
+        run: npx playwright test --ignore-snapshots
