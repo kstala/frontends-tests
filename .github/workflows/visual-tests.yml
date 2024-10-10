@@ -52,7 +52,7 @@ jobs:
 
       - name: Initialize snapshots
         if: ${{steps.cache.outputs.cache-hit != 'true' || inputs.update-snapshots == 'true'}}
-        run: npx playwright test visual-tests.spec.ts --update-snapshots --reporter html
+        run: npx playwright test -c visual.config.ts visual-tests.spec.ts --update-snapshots --reporter html
 
       - name: Test
-        run: npx playwright test visual-tests.spec.ts --project=chromium
+        run: npx playwright test -c visual.config.ts visual-tests.spec.ts --project=chromium
