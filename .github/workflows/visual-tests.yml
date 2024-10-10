@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '59 23 * * *'
-    
+
 jobs:
   run-e2e:
     name: Playwright visual test demo
@@ -29,4 +29,4 @@ jobs:
           retention-days: 10
 
       - name: Test
-        run: npx playwright test visual-tests.spec.ts --project=chromium --ignore-snapshots
+        run: npx playwright test -c visual.config.ts visual-tests.spec.ts --project=chromium --ignore-snapshots
