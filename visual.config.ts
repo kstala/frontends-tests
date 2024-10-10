@@ -19,6 +19,7 @@ export default defineConfig({
   testDir: './tests',
   outputDir: '.test/spec/output',
   snapshotPathTemplate: '.test/spec/snaps/{projectName}/{testFilePath}/{arg}{ext}',
+  testMatch: '*.spec.{ts,tsx}',
   timeout: 1000 * 60,
   workers: isCI ? 1 : '50%',
   retries: isCI ? 2 : 0,
