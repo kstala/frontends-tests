@@ -17,6 +17,7 @@ console.log("Running tests for: ", baseURL);
  */
 export default defineConfig({
   testDir: './tests',
+  outputDir: '.test/spec/output',
   snapshotPathTemplate: '.test/spec/snaps/{projectName}/{testFilePath}/{arg}{ext}',
   timeout: 1000 * 60,
   workers: isCI ? 1 : '50%',
