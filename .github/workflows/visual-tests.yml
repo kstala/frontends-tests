@@ -26,4 +26,4 @@ jobs:
           npx playwright install
 
       - name: Test
-        run: npx playwright test --ignore-snapshots
+        run: npx playwright test visual-tests.spec.ts --project=chromium --ignore-snapshots
