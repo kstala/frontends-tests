@@ -26,7 +26,7 @@ jobs:
         with:
           name: playwright-report
           path: playwright-report/
-          retention-days: 30
+          retention-days: 10
 
       - name: Test
         run: npx playwright test visual-tests.spec.ts --project=chromium --ignore-snapshots
