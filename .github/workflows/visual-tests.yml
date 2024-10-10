@@ -5,6 +5,19 @@ on:
   schedule:
     - cron: '59 23 * * *'
     
+ # Allow updating snapshots during manual runs
+  workflow_call:
+    inputs:
+      update-snapshots:
+        description: "Update snapshots?"
+        type: boolean
+  
+  # # Allow updating snapshots during automatic runs
+  # workflow_dispatch: 
+  #   inputs:
+  #     update-snapshots:
+  #       description: "Update snapshots?"
+  #       type: boolean    
 jobs:
   run-e2e:
     name: Playwright visual test demo
@@ -36,8 +49,8 @@ jobs:
           path: .test/**
 
       - name: Initialize snapshots
-        if: ${{steps.cache.outputs.cache-hit != 'true'}}
-        run: npx playwright test visual-tests.spec.ts --project=chromium --update-snapshots
+        if: ${{steps.cache.outputs.cache-hit != 'true' || inputs.update-snapshots == 'true'}}
+        run: npx playwright test visual-tests.spec.ts --update-snapshots --reporter html
 
       - name: Test
         run: npx playwright test visual-tests.spec.ts --project=chromium
