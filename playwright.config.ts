@@ -15,7 +15,6 @@ console.log("Running tests for: ", baseURL);
  */
 export default defineConfig({
   testDir: './tests',
-  snapshotPathTemplate: '.test/snaps/{projectName}/{testFilePath}/{arg}{ext}',
   timeout: 0,
   expect: {
     /**
