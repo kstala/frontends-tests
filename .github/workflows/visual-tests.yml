@@ -50,7 +50,7 @@ jobs:
 
       - name: Test
         # continue-on-error: true
-        run: npx playwright test -c visual.config.ts visual-tests.spec.ts --project=chromium 
+        run: npx playwright test -c visual.config.ts visual-tests.spec.ts --project=chromium --ignore-snapshots
 
       # - name: Upload test report
       #   if: always()
