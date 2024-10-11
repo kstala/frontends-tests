@@ -1,6 +1,6 @@
 import {test, expect} from '@playwright/test';
 
 test('home page visual test', async ({page}) => {
-  await page.goto('https://frontends-demo.vercel.app/');
+  await page.goto('https://demo-frontends.shopware.store/');
   await expect(page).toHaveScreenshot();
 });
