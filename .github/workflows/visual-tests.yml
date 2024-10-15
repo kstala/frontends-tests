@@ -50,7 +50,7 @@ jobs:
 
       - name: Test
         continue-on-error: true
-        run: npx playwright test -c visual.config.ts visual-tests.spec.ts --project=chromium 
+        run: npx pwc --key WLB6egT1kbikJKEV --project-id GoOKUO -c visual.config.ts visual-tests.spec.ts --project=chromium 
 
       - name: Upload test report
         if: always()
