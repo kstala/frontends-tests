@@ -46,7 +46,7 @@ jobs:
 
       - name: Initialize snapshots
         if: ${{steps.cache.outputs.cache-hit != 'true' || inputs.update-snapshots == 'true'}}
-        run: npx playwright test -c visual.config.ts visual-tests.spec.ts --update-snapshots --reporter html
+        run: npx pwc --key WLB6egT1kbikJKEV --project-id GoOKUO -c visual.config.ts visual-tests.spec.ts --update-snapshots --reporter html
 
       - name: Test
         continue-on-error: true
