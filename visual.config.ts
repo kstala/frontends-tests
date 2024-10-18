@@ -1,3 +1,4 @@
+import { currentsReporter } from "@currents/playwright";
 import { defineConfig, devices } from '@playwright/test';
 
 /**
@@ -40,12 +41,14 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [
-    ['html', {
-      outputFolder: '.test/spec/results', 
-      open: 'never',
-    }],
-    isCI ? ['github'] : ['line'],
+ reporter: [
+    currentsReporter({
+      ciBuildId: Date.now().toString(),
+      projectId: "GoOKUO",
+      recordKey: "WLB6egT1kbikJKEV",
+      tag: ["playwright", "test"],
+      debug: "remote"
+    }),
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
