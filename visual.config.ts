@@ -44,8 +44,8 @@ export default defineConfig({
   reporter: [
     currentsReporter({
       ciBuildId: Date.now().toString(),
-      projectId: "GoOKUO",
-      recordKey: "WLB6egT1kbikJKEV",
+      projectId: 
+      recordKey: 
       tag: ["playwright", "test"],
       debug: "remote"
     }),
